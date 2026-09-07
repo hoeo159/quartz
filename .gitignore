@@ -12,3 +12,6 @@ replit.nix
 .quartz/
 quartz/cli/tui/dist/
 .turbo/
+
+# content is a symlink to the Windows-side Obsidian vault (see .github/workflows/deploy.yml)
+/content

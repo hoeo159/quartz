@@ -44,10 +44,12 @@ plugins:
     enabled: true
     options:
       defaultDateType: modified
+      # `filesystem` is omitted: the vault lives on the Windows drive via 9p,
+      # which reports birthtime as 0, so it only ever yields an invalid created date.
+      # Set `created:` in a note's frontmatter when an accurate creation date matters.
       priority:
         - frontmatter
         - git
-        - filesystem
     order: 10
   - source: "@quartz-community/syntax-highlighting"
     enabled: true

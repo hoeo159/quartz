@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - v5
+  # Sent by hoeo159/quartz-content whenever notes are pushed there.
+  repository_dispatch:
+    types: [content-updated]
   workflow_dispatch:
 
 permissions:
@@ -23,6 +26,15 @@ jobs:
         with:
           fetch-depth: 0 # Fetch all history for git info
 
+      # `content` is git-ignored here: locally it is a symlink to the Obsidian
+      # vault on the Windows drive. On CI it is the vault repository itself.
+      - name: Check out content
+        uses: actions/checkout@v6
+        with:
+          repository: hoeo159/quartz-content
+          path: content
+          fetch-depth: 0 # Fetch all history so git modified dates are accurate
+
       - uses: actions/setup-node@v6
         with:
           node-version-file: .node-version
@@ -35,7 +47,7 @@ jobs:
         run: npm run install-plugins
 
       - name: Build Quartz
-        run: npx quartz build
+        run: npm run site:build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
