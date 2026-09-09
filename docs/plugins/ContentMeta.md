@@ -27,7 +27,7 @@ This plugin accepts the following configuration options:
 - source: github:quartz-community/content-meta
   enabled: true
   options:
-    showReadingTime: true
+    showReadingTime: false
     showComma: true
 ```
 
