@@ -1,3 +1,25 @@
 @use "./variables.scss" as *;
 
 // put your custom CSS here!
+
+// ── 한글 본문 가독성 ───────────────────────────────────────────────
+// base.scss의 기본값은 라틴 문자 기준(line-height 1.6rem, p 여백 브라우저
+// 기본 1em)이라 한글에서는 줄이 빽빽하고 문단 구분이 잘 안 된다.
+article.popover-hint {
+  p,
+  li {
+    line-height: 1.9;
+    // 한글은 어절 단위로 끊어 읽는다. 기본값은 글자 아무 데서나 줄을
+    // 바꿔서 눈이 걸린다. 긴 URL은 base.scss의 overflow-wrap이 처리.
+    word-break: keep-all;
+  }
+
+  // 문단 사이 여백이 줄 간격보다 확실히 넓어야 덩어리가 구분된다.
+  p {
+    margin-block: 1.4em;
+  }
+
+  li {
+    margin-block: 0.45em;
+  }
+}
