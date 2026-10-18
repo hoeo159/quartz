@@ -23,3 +23,12 @@ article.popover-hint {
     margin-block: 0.45em;
   }
 }
+
+// ── 본문 이미지 중앙 정렬 ──────────────────────────────────────────
+// <p> 안의 인라인 <img>로 렌더링되므로, 문단에 text-align을 주면
+// hard-line-breaks 때문에 같은 문단에 붙은 설명 글까지 가운데로 간다.
+// 이미지만 블록으로 만들어 가운데 둔다.
+article.popover-hint img {
+  display: block;
+  margin-inline: auto;
+}
